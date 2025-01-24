@@ -2019,15 +2019,15 @@ declare namespace Dysnomia {
   }
 
   type EditApplicationOptions = Partial<Pick<OAuthApplicationInfo, |
-  "cover_image" |
-  "custom_install_url" |
-  "description" |
-  "flags" |
-  "icon" |
-  "install_params" |
-  "interactions_endpoint_url" |
-  "role_connections_verification_url" |
-  "tags"
+      "cover_image" |
+      "custom_install_url" |
+      "description" |
+      "flags" |
+      "icon" |
+      "install_params" |
+      "interactions_endpoint_url" |
+      "role_connections_verification_url" |
+      "tags"
   >>;
 
   interface OAuthTeamInfo {
@@ -2516,6 +2516,7 @@ declare namespace Dysnomia {
       FAILED_TO_MENTION_SOME_ROLES_IN_THREAD: 256;
       SUPPRESS_NOTIFICATIONS:                 4096;
       IS_VOICE_MESSAGE:                       8192;
+      HAS_SNAPSHOT:                           16384;
     };
     MessageReferenceTypes: {
       DEFAULT: 0;
