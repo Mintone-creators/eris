@@ -1499,6 +1499,7 @@ declare namespace Dysnomia {
     collectibles: UserCollectibles | null;
     discriminator: string;
     globalName: string | null;
+    primaryGuild: UserPrimaryGuild | null;
     username: string;
   }
   interface AvatarDecorationData {
@@ -1979,6 +1980,13 @@ declare namespace Dysnomia {
     asset: string;
     label: string;
     palette: string;
+  }
+
+  interface UserPrimaryGuild {
+    badge: string | null;
+    identityEnabled: boolean | null;
+    identityGuildID: string | null;
+    tag: string | null;
   }
 
   // Voice
@@ -4445,6 +4453,7 @@ declare namespace Dysnomia {
     globalName: string | null;
     id: string;
     mention: string;
+    primaryGuild: UserPrimaryGuild | null;
     publicFlags?: number;
     staticAvatarURL: string;
     system: boolean;
