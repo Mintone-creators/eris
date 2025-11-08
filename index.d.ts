@@ -556,6 +556,7 @@ declare namespace Dysnomia {
     daveEncryption?: boolean;
     opusOnly?: boolean;
     udpTimeout?: number;
+    decryptionFailureTolerance?: number;
     ws?: unknown;
   }
 
@@ -4571,6 +4572,7 @@ declare namespace Dysnomia {
     channels: number;
     connecting: boolean;
     connectionTimeout: NodeJS.Timeout | null;
+    consecutiveDecryptionFailures: number;
     current?: VoiceStreamCurrent | null;
     daveEnabled: boolean;
     daveProtocolVersion?: number;
@@ -4578,10 +4580,12 @@ declare namespace Dysnomia {
     daveSession: unknown | null;
     ended?: boolean;
     endpoint: URL;
+    failureTolerance: number;
     frameDuration: number;
     frameSize: number;
     heartbeatInterval: NodeJS.Timeout | null;
     id: string;
+    lastTransitionID: number | null;
     mode?: string;
     modes?: string;
     /** Optional dependencies OpusScript (opusscript) or OpusEncoder (@discordjs/opus) */
@@ -4595,6 +4599,7 @@ declare namespace Dysnomia {
     receiveStreamOpus?: VoiceDataStream | null;
     receiveStreamPCM?: VoiceDataStream | null;
     reconnecting: boolean;
+    reinitializing: boolean;
     samplingRate: number;
     secret: Buffer;
     sendHeader: Buffer;
@@ -4616,7 +4621,7 @@ declare namespace Dysnomia {
     ws: BrowserWebSocket | WebSocket | null;
     wsOptions: unknown;
     wsSequence: number;
-    constructor(id: string, options?: { shard?: Shard; shared?: boolean; opusOnly?: boolean; daveEncryption?: boolean });
+    constructor(id: string, options?: { shard?: Shard; shared?: boolean; opusOnly?: boolean; decryptionFailureTolerance?: number; udpTimeout?: number; daveEncryption?: boolean });
     connect(data: VoiceConnectData): NodeJS.Timer | void;
     disconnect(error?: Error, reconnecting?: boolean): void;
     emit<K extends keyof VoiceEvents>(event: K, ...args: VoiceEvents[K]): boolean;
@@ -4630,6 +4635,7 @@ declare namespace Dysnomia {
     pause(): void;
     play(resource: ReadableStream | string, options?: VoiceResourceOptions): void;
     receive(type: "opus" | "pcm"): VoiceDataStream;
+    recoverFromInvalidTransition(transitionID: number): void;
     registerReceiveEventHandler(): void;
     resume(): void;
     sendAudioFrame(frame: Buffer): void;
