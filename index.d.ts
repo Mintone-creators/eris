@@ -2819,6 +2819,7 @@ declare namespace Dysnomia {
       useExternalSounds:                35184372088832n;
       useSoundboard:                    4398046511104n;
       sendVoiceMessages:                70368744177664n;
+      setVoiceChannelStatus:            281474976710656n;
       sendPolls:                        562949953421312n;
       useExternalApps:                  1125899906842624n;
       pinMessages:                      2251799813685248n;
