@@ -2823,10 +2823,11 @@ declare namespace Dysnomia {
       sendPolls:                        562949953421312n;
       useExternalApps:                  1125899906842624n;
       pinMessages:                      2251799813685248n;
+      bypassSlowmode:                   4503599627370496n;
       allGuild:                         29697484783806n;
-      allText:                          4011553947384913n;
+      allText:                          8515153574755409n;
       allVoice:                         40136803878673n;
-      all:                              4081387162304511n;
+      all:                              8584986789675007n;
     };
     PollLayoutTypes: {
       DEFAULT: 1;
@@ -3366,6 +3367,7 @@ declare namespace Dysnomia {
     getGuildInvites(guildID: string): Promise<Invite[]>;
     getGuildOnboarding(guildID: string): Promise<GuildOnboarding>;
     getGuildPreview(guildID: string): Promise<GuildPreview>;
+    getGuildRoleMemberCounts(guildID: string): Promise<Record<string, number>>;
     getGuildScheduledEvents(guildID: string, options?: GetGuildScheduledEventOptions): Promise<GuildScheduledEvent[]>;
     getGuildScheduledEventUsers(guildID: string, eventID: string, options?: GetGuildScheduledEventUsersOptions): Promise<GuildScheduledEventUser[]>;
     getGuildSoundboardSound(guildID: string, soundID: string): Promise<SoundboardSound>;
@@ -3718,6 +3720,7 @@ declare namespace Dysnomia {
     getRESTSticker(stickerID: string): Promise<Sticker>;
     getRESTStickers(): Promise<Sticker[]>;
     getRESTVoiceState(userID?: string): Promise<VoiceState>;
+    getRoleMemberCounts(): Promise<Record<string, number>>;
     getScheduledEvents(options?: GetGuildScheduledEventOptions): Promise<GuildScheduledEvent[]>;
     getScheduledEventUsers(eventID: string, options?: GetGuildScheduledEventUsersOptions): Promise<GuildScheduledEventUser[]>;
     getSoundboardSound(soundID: string): Promise<SoundboardSound>;
